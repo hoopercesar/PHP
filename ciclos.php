@@ -32,6 +32,38 @@ sort($lista2)
     
     ?>
   </ul>
+  <br />
+
+  <ul>
+    <p>Ciclo do-while se ejecuta al menos 1 vez, hasta que se verifica <br>
+      que se cumpla la condición dentro de while.
+    </p>
+    <?php
+    $i = 1;
+    do {
+      echo $i.'<br />';
+    } while($i>10);
+    ?>
+  </ul>
+
+  <ul>
+    <p>Ciclo foreach para arreglos asociativos (hash o diccionarios)</p>
+    <?php
+    $meses = ['enero' => 'verano', 'febrero' => 'verano',
+              'marzo' => 'otoño', 'abril'=>'otoño',
+              'diciembre'=> 'verano', 'agosto'=>'invierno', 'mayo'=>'otoño',
+              'julio'=>'invierno'];
+
+    foreach($meses as $mes=>$valor) 
+    echo ($valor=='invierno') ? $mes.'<br />':'Es verano'.'<br />';
+    
+    
+    
+    ?>
+  </ul>
+
+
 
 </body>
 </html>
+
