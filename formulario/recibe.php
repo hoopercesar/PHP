@@ -8,13 +8,15 @@
 </head>
 <body>
 <?php
- echo $_POST["name"].'<br />'; 
+if ($_POST) {
 
- echo $_POST['sexo'].'<br />';
-
- echo print_r($_POST).'<br />';
- 
- ?>
+  foreach($_POST as $k=>$v) {
+    echo $k.': '.$v.'<br />';
+   } 
+} else {
+  header('Location: http://localhost/cursoPHP/formulario/');
+}
+?> 
  <br>
 
   
