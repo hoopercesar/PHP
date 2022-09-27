@@ -15,14 +15,14 @@
       action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" 
       method="post"
     >
-    
+
     <input 
       type="text" 
       class="form-control" 
       id="nombre" 
       name="nombre" 
       placeholder="nombre" 
-      value=""
+      value="<?php if (!$enviado && isset($nombre)) echo $nombre;?>"
     >
     
     <input 
@@ -31,7 +31,16 @@
       id='correo'
       name='correo'
       placeholder='correo'
-      value=''
+      value="<?php if (!$enviado && isset($correo)) echo $correo;?>"
+    >
+
+    <input 
+      type="text"
+      class='form-control'
+      id='telefono'
+      name='telefono'
+      placeholder='telefono'
+      value="<?php if (!$enviado && isset($telefono)) echo $telefono;?>"
     >
 
     <textarea 
@@ -39,7 +48,7 @@
       class='form-control' 
       id='mensaje' 
       placeholder='mensaje'
-    ></textarea>
+    ><?php if (!$enviado && isset($mensaje)) echo $mensaje;?></textarea>
 
     <!-- 
       estos alertas se implementarán con PHP
