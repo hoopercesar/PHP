@@ -4,19 +4,45 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script 
+    type="module" 
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
+  ></script>
 
-  <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Nunito:ital,wght@0,200;0,400;0,500;0,700;1,300;1,400&family=Oswald:wght@200;300;400;500;600;700&family=Yuji+Boku&display=swap" rel="stylesheet">
+  <script 
+    nomodule 
+    src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
+  ></script>
+
+  <style>
+    .icono {
+      color: blue;
+      font-size: 20px;
+    }
+  </style>
+
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600" rel="stylesheet">
 
   <link rel="stylesheet" href="estilos.css">
   <title>Paginación</title>
 </head>
 <body>
   <div class="contenedor">
-    <h1>Articulos</h1>
+    <h1>Articulos
+    <ion-icon name="rainy-outline"></ion-icon>
+    </h1>
+    
     <section class="articulos">
       <ul>
         <?php foreach($articulos as $articulo): ?>
-          <li><?php echo 'Articulo ' . $articulo['id'] . ' : '. $articulo['articulo']; ?></li>
+          <li>
+            
+            <?php echo 'Articulo ' . $articulo['id'] . ' : '. $articulo['articulo']; ?>
+            <div class="icono">
+              <ion-icon name="bug-outline"></ion-icon>
+            </div>
+            
+          </li>
         <?php endforeach; ?>
 
       </ul>
@@ -24,6 +50,7 @@
 
     <section class="paginacion">
       <ul>
+        
         <!-- Se estable el uso del botón (flecha) de retroceso -->
         <?php if ($pagina == 1) : ?>
           <li class="disabled">&laquo;</a></li>
@@ -54,12 +81,7 @@
 
         <?php endif; ?>
         <!-- 
-        <li class="disabled">&laquo;</a></li>
         
-        
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">&raquo;</a></li>
         -->
         
       </ul>
