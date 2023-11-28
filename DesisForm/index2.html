@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Votación</title>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        /* Contenido de estilo.css */
+
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0; /* Elimina márgenes predeterminados del cuerpo del documento */
+            padding: 0; /* Elimina relleno predeterminado del cuerpo del documento */
+        }
+
+        #contenedor {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            max-width: 600px; /* Ajusta el ancho máximo del contenedor según tus necesidades */
+            margin: auto;
+            border: 1px solid #ccc;
+            padding: 20px;
+        }
+
+        h1 {
+            grid-column: span 2; /* Hace que el título ocupe las dos columnas */
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input, select {
+            width: calc(100% - 10px); /* Ajusta el ancho para considerar el relleno */
+            padding: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #3552d3;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 2px;
+        }
+
+        .checkbox-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .checkbox-group label {
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+<div id="contenedor">
+    <h1>Formulario de Votación</h1>
+
+    <label for="nombre">Nombre y Apellido:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="rut">RUT:</label>
+    <input type="text" id="rut" name="rut" required>
+
+    <label for="email">Correo Electrónico:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="region">Región:</label>
+    <select id="region" name="region" required>
+        <option value="region1">Región 1</option>
+        <option value="region2">Región 2</option>
+        <!-- Agrega más regiones según sea necesario -->
+    </select>
+
+    <label for="comuna">Comuna:</label>
+    <select id="comuna" name="comuna" required>
+        <option value="comuna1">Comuna 1</option>
+        <option value="comuna2">Comuna 2</option>
+        <!-- Agrega más comunas según sea necesario -->
+    </select>
+
+    <label for="candidato">Candidato:</label>
+    <select id="candidato" name="candidato" required>
+        <option value="candidato1">Candidato 1</option>
+        <option value="candidato2">Candidato 2</option>
+        <!-- Agrega más candidatos según sea necesario -->
+    </select>
+
+    <label>¿Cómo supiste de nosotros? (Selecciona al menos 2)</label>
+    <div class="checkbox-group">
+        <input type="checkbox" id="web" name="fuente" value="web">
+        <label for="web">Web</label>
+
+        <input type="checkbox" id="tv" name="fuente" value="tv">
+        <label for="tv">TV</label>
+
+        <input type="checkbox" id="redesSociales" name="fuente" value="redesSociales">
+        <label for="redesSociales">Redes Sociales</label>
+
+        <input type="checkbox" id="amigo" name="fuente" value="amigo">
+        <label for="amigo">Amigo</label>
+    </div>
+
+    <button type="button" onclick="enviarVoto()">Enviar Voto</button>
+</div>
+
+<!-- Puedes incluir scripts de JavaScript aquí -->
+<script>
+    function enviarVoto() {
+        // Recopila los datos del formulario
+        let nombre = document.getElementById('nombre').value;
+        let rut = document.getElementById('rut').value;
+        let email = document.getElementById('email').value;
+        let region = document.getElementById('region').value;
+        let comuna = document.getElementById('comuna').value;
+        let candidato = document.getElementById('candidato').value;
+
+        // Recopila las opciones seleccionadas para "Cómo supiste de nosotros"
+        let fuentesSeleccionadas = [];
+        let checkboxes = document.getElementsByName('fuente');
+        checkboxes.forEach(function(checkbox) {
+            if (checkbox.checked) {
+                fuentesSeleccionadas.push(checkbox.value);
+            }
+        });
+
+        // Realiza la llamada Ajax para enviar los datos al servidor PHP
+        // Aquí debes incluir la lógica para enviar los datos y manejar la respuesta del servidor
+        // Puedes usar la función fetch o XMLHttpRequest para hacer la llamada Ajax
+        // Escribe la lógica de manejo de respuesta aquí (por ejemplo, mostrar un mensaje de éxito o error)
+    }
+</script>
+
+</body>
+</html>
