@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistema de Votación</title>
-    <link rel="stylesheet" href="estilo.css">
+    <!-- Para que se vea bien -->
+    
     <style>
         /* Contenido de estilo.css */
 
@@ -115,32 +116,10 @@
     <button type="button" onclick="enviarVoto()">Enviar Voto</button>
 </div>
 
-<!-- Puedes incluir scripts de JavaScript aquí -->
-<script>
-    function enviarVoto() {
-        // Recopila los datos del formulario
-        let nombre = document.getElementById('nombre').value;
-        let rut = document.getElementById('rut').value;
-        let email = document.getElementById('email').value;
-        let region = document.getElementById('region').value;
-        let comuna = document.getElementById('comuna').value;
-        let candidato = document.getElementById('candidato').value;
+<script src="dinamica.js"></script>
+<script src="regiones.js"></script>
 
-        // Recopila las opciones seleccionadas para "Cómo supiste de nosotros"
-        let fuentesSeleccionadas = [];
-        let checkboxes = document.getElementsByName('fuente');
-        checkboxes.forEach(function(checkbox) {
-            if (checkbox.checked) {
-                fuentesSeleccionadas.push(checkbox.value);
-            }
-        });
 
-        // Realiza la llamada Ajax para enviar los datos al servidor PHP
-        // Aquí debes incluir la lógica para enviar los datos y manejar la respuesta del servidor
-        // Puedes usar la función fetch o XMLHttpRequest para hacer la llamada Ajax
-        // Escribe la lógica de manejo de respuesta aquí (por ejemplo, mostrar un mensaje de éxito o error)
-    }
-</script>
 
 </body>
 </html>
