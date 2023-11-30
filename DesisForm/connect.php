@@ -19,26 +19,36 @@ try {
 	$sql = "SELECT id, region FROM regiones";
 	$result = $conn->query($sql);
 
-	$comunas = "SELECT id, comuna FROM comunas";
+	$comunas = "SELECT id,comuna,provincia_id FROM comunas";
 	$resultComunas = $conn->query($comunas);
 
 	// Verificar si la consulta tuvo éxito
-	if ($result) {
+	//if ($result) {
 		// procesamiento de datos
-		foreach ($result as $value) 
-		{
-			echo "ID: " .  $value['id']. ", Region: ". $value['region'].`<br>`;
-		}
-	} else {
-		echo "Error en la consulta: ". $conn->errorInfo()[2];
-	}
+	//	foreach ($result as $value) 
+	//	{
+	//		echo "ID: " .  $value['id']. ", Region: ". $value['region'].`<br>`;
+	//	}
+	//} else {
+	//	echo "Error en la consulta: ". $conn->errorInfo()[2];
+	//}
 
 	if ($resultComunas) {
 		// procesamiento de datos
 		foreach ($resultComunas as $value) 
 		{
-			echo "ID: " .  $value['id']. ", Comuna: ". $value['comuna'].`<br>`;
-		}
+			$formattedData[] = array(
+				'comuna' => $value['comuna'],
+				'ID_provincia' => $value['provincia_id']
+			);
+		};
+
+		// Convertir el array en una cadena JSON
+		$jsonData = json_encode($formattedData);
+
+		// Imprimir la cadena JSON
+		echo $jsonData;
+
 	} else {
 		echo "Error en la consulta: ". $conn->errorInfo()[2];
 	}
@@ -46,13 +56,5 @@ try {
 } catch (PDOException $e) {
     die("Error de conexión: " . $e->getMessage());
 }
-
-
-
-	
-
-
-	
-
 
 ?>
