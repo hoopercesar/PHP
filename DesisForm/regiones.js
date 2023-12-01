@@ -13,23 +13,44 @@
             throw new Error('Error al cargar los datos');
         }
   
-        const regiones = await response.json();
+        const datos = await response.json();
+
+        // LOGICA para seleccionar las regiones
   
+        // selecciona elemento región y comuna
         let regionElement = document.getElementById('region');
+        let comunaElement = document.getElementById('comuna');
   
-        // Limpia el contenido actual del elemento
+        // Limpia el contenido de cada elemento
         regionElement.innerHTML = '';
+        comunaElement.innerHTML = '';
+
+        // Eliminar regiones duplicadas
+        let regiones = datos.map(elemento => elemento.region);
+        regiones = [... new Set(regiones)];
   
-        // Agrega nuevas opciones al elemento
+        // Despliega regiones en elemento option
         regiones.forEach(element => {
             let option = document.createElement('option');
-            option.innerHTML = element.region;
-            
-            //option.text = element.nombre;
+            option.innerHTML = element;
             regionElement.appendChild(option);
-        });
-  
-  
+        })
+
+        // LOGICA para poner comuna según región respectiva ---
+
+        regionElement.onchange = function () {
+            let regionSeleccionada = regionElement.value;
+            comunaElement.innerHTML = '';
+
+            datos.forEach(dato => {                
+                if (dato.region === regionSeleccionada) {
+                    let option = document.createElement('option');
+                    option.innerHTML = dato.comuna;
+                    comunaElement.appendChild(option);
+                }               
+            });
+        }           
+
     } catch (error) {
         console.log('Error:', error.message);
     }
