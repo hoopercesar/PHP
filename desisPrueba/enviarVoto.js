@@ -1,7 +1,7 @@
 function enviarVoto() {
 
-    document.addEventListener('DOMContentLoaded', function () {
-    const formulario = document.querySelector('form');
+ 
+    const formulario = document.querySelector('#formulario');
 
     formulario.addEventListener('submit', function (event) {
         event.preventDefault(); // Evitar el comportamiento predeterminado del formulario
@@ -18,8 +18,9 @@ function enviarVoto() {
         const fuentesCheckbox = document.getElementsByName('fuente');
         const fuentesSeleccionadas = [];
         fuentesCheckbox.forEach(function (checkbox) {
+            console.log(checkbox)
             if (checkbox.checked) {
-                fuentesSeleccionadas.push(checkbox.value);
+                fuentesSeleccionadas.push(checkbox.value);                
             }
         });
 
@@ -45,13 +46,18 @@ function enviarVoto() {
         .then(response => response.json())
         .then(data => {
             // Hacer algo con la respuesta del servidor si es necesario
-            console.log(data);
+            const mensaje = document.getElementById('mensaje');
+            mensaje.innerHTML = data.message;
+            
+            if (data.success) {
+                formulario.reset();
+            }
         })
         .catch(error => {
             console.error('Error al enviar los datos:', error);
         });
     });
-});
+
 }
 
 

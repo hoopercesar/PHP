@@ -2,7 +2,7 @@
 $servername="localhost";
 $port=3306;
 $username="root";
-$password="Password123#@!";
+$password=
 $database="sistema_votacion";
 
 // para que el servidor apache2 pueda ejecutar el archivo connect.php es necesario instalar 
